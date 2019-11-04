@@ -80,10 +80,17 @@ target/
 
 ### Django ###
 *.log
-*.pot
 *.pyc
-__pycache__/
 local_settings.py
 
 .env
 db.sqlite3
+cedibi/settings.py
+.ides/*
+.idea/
+.idea/.gitignore
+.idea/cedibi.iml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
