@@ -8,6 +8,9 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, blank=True, editable=False)
     
+    def __str__(self):
+        return self.username
+    
     
 class ControlAccess(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
