@@ -13,6 +13,9 @@ class Menu(models.Model):
     parent_id = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
     enable = models.BooleanField(default=True)
     
+    def __str__(self):
+        return self.name
+    
     
 class Rol(models.Model):
     name = models.CharField(max_length=20)
@@ -22,6 +25,9 @@ class Rol(models.Model):
         through='Permission',
         through_fields=('rol', 'menu'),
     )
+    
+    def __str__(self):
+        return self.name
 
 
 class Company(models.Model):
@@ -35,6 +41,9 @@ class Company(models.Model):
     contact_phone = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, blank=True, editable=False)
+    
+    def __str__(self):
+        return self.name
 
 
 class Profile(models.Model):

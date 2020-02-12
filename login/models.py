@@ -5,6 +5,7 @@ class User(models.Model):
     username = models.CharField(max_length=30)
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
+    password_tmp = models.CharField(max_length=64)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, blank=True, editable=False)
     
