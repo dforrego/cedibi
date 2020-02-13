@@ -13,3 +13,4 @@ class ControlAccessAdmin(admin.ModelAdmin):
 
 admin.site.register(User, UserAdmin)
 admin.site.register(ControlAccess, ControlAccessAdmin)
+

@@ -32,3 +32,4 @@ admin.site.register(Company, CompanyAdmin)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Permission, PermissionAdmin)
 
+
