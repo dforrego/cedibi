@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from bi.models import Board, Graph, Comment, Values, TypeBoard
+from dashboard.serializers import RolSerializer
+from login.serializers import UserSerializer
 
 
 class TypeBoardSerializer(serializers.ModelSerializer):
@@ -10,6 +12,7 @@ class TypeBoardSerializer(serializers.ModelSerializer):
 
 class BoardSerializer(serializers.ModelSerializer):
     type = TypeBoardSerializer(many=False, read_only=True)
+    rol = RolSerializer(many=False, read_only=True)
   
     class Meta:
         model = Board
@@ -18,6 +21,7 @@ class BoardSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
     board = BoardSerializer(many=False, read_only=True)
+    user = UserSerializer(many=False, read_only=True)
   
     class Meta:
         model = Comment

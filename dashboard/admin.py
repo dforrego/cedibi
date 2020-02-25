@@ -17,7 +17,7 @@ class CompanyAdmin(admin.ModelAdmin):
     
 
 class ProfileAdmin(admin.ModelAdmin):
-    fields = ['user', 'rol', 'phone', 'company', 'group', 'active', 'created_at']
+    fields = ['user', 'rol', 'phone', 'company', 'active']
     # list_display = ('name', 'board', 'state', 'created_at')
     
 

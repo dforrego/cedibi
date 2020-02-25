@@ -19,6 +19,7 @@ from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
 from login import views as login_view
 from bi import views as bi_view
+from login.views import login, logout
 
 urlpatterns = [
   path('admin/', admin.site.urls),
@@ -36,6 +37,11 @@ urlpatterns = [
   # get comments
   # create comments
   path('api/v1/boards/<int:pk>/comments', bi_view.CommentListCreate.as_view()),
+  ###
+  # login
+  url('api/v1/login', login, name='login'),
+  # login
+  url('api/v1/logout', logout, name='logout'),
   
   path('docs/',
        include_docs_urls(title='Documentación API CeDiBI',

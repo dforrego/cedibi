@@ -47,14 +47,16 @@ class Company(models.Model):
 
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="profileuser")
     rol = models.ForeignKey(Rol, on_delete=models.PROTECT)
     phone = models.CharField(max_length=12)
     company = models.ForeignKey(Company, on_delete=models.PROTECT)
-    group = models.CharField(max_length=30)
     active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, blank=True, editable=False)
+    
+    def __str__(self):
+        return self.user.first_name + " (" + self.rol.name + ")"
 
 
 class Permission(models.Model):
