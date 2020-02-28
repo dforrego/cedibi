@@ -47,7 +47,7 @@ class Company(models.Model):
 
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="profileuser")
+    user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
     rol = models.ForeignKey(Rol, on_delete=models.PROTECT)
     phone = models.CharField(max_length=12)
     company = models.ForeignKey(Company, on_delete=models.PROTECT)
