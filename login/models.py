@@ -13,7 +13,7 @@ class User(AbstractUser):
     
     
 class ControlAccess(models.Model):
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, related_name="audit", on_delete=models.DO_NOTHING)
     ip_address = models.CharField(max_length=50)
     browser = models.CharField(max_length=20)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, editable=False)

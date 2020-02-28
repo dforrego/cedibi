@@ -1,26 +1,28 @@
 from django.contrib import auth
-from django.forms import model_to_dict
-from django.http import HttpResponse
 from django.utils.timezone import now
-from django.views.decorators.csrf import csrf_exempt
 from oauth2_provider.contrib.rest_framework import IsAuthenticatedOrTokenHasScope
 from oauth2_provider.decorators import protected_resource, rw_protected_resource
-from rest_framework import authentication
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from login.models import User
-from login.serializers import UserSerializer, LoginSerializer
+from login.serializers import UserSerializer, LoginSerializer, ProfileSerializer
 
 
 class UserList(RetrieveAPIView):
-    serializer_class = UserSerializer
+    serializer_class = ProfileSerializer
     permission_classes = (IsAuthenticatedOrTokenHasScope,)
     required_scopes = ['read']
     
     def get_queryset(self):
         return User.objects.filter(pk=self.kwargs["pk"])
+    
+    def get(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        data = serializer.data
+        return response_data(message='success profile', extra_data={'profile': data})
     
     
 # @rw_protected_resource(scopes=['login'])
