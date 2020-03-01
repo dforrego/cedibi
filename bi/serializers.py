@@ -1,12 +1,19 @@
+# from login.serializers import UserDataSerializer as USerial
 from rest_framework import serializers
 from bi.models import Board, Graph, Comment, Values, TypeBoard
-from login.serializers import UserDataSerializer
 
 
 class TypeBoardSerializer(serializers.ModelSerializer):
     class Meta:
         model = TypeBoard
         fields = ['name', 'code']
+
+
+class BoardListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Board
+        fields = ['id', 'name']
 
 
 class BoardSerializer(serializers.ModelSerializer):
@@ -18,7 +25,7 @@ class BoardSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    user = UserDataSerializer(many=False, read_only=True)
+    # user = USerial(many=False, read_only=True)
   
     class Meta:
         model = Comment
