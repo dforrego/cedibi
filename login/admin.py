@@ -1,10 +1,7 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+
 from login.models import User, ControlAccess
-
-
-class UserAdmin(admin.ModelAdmin):
-    fields = ['username', 'name', 'email']
-    list_display = ('username', 'email', 'updated_at')
 
 
 class ControlAccessAdmin(admin.ModelAdmin):
@@ -13,3 +10,4 @@ class ControlAccessAdmin(admin.ModelAdmin):
 
 admin.site.register(User, UserAdmin)
 admin.site.register(ControlAccess, ControlAccessAdmin)
+
