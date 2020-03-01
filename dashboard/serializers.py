@@ -26,6 +26,14 @@ class CompanyUserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Profile
-        fields = ['company', 'rol']
+        fields = ['company']
+
+
+class RolUserSerializer(serializers.ModelSerializer):
+    rol = RolSerializer(many=False, read_only=True)
+    
+    class Meta:
+        model = Profile
+        fields = ['rol']
 
 

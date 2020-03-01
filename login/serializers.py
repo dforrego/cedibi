@@ -1,8 +1,15 @@
 from django.contrib.auth import authenticate
 from rest_framework import serializers
-from dashboard.serializers import CompanyUserSerializer, RolSerializer
+from dashboard.serializers import CompanyUserSerializer, RolUserSerializer
 from login.models import User
 
+
+class UserDataSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name']
+      
 
 class UserSerializer(serializers.ModelSerializer):
     profile = CompanyUserSerializer(many=False, read_only=True)
@@ -13,11 +20,11 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    rol = RolSerializer(many=False, read_only=True)
+    profile = RolUserSerializer(many=False, read_only=True)
     
     class Meta:
         model = User
-        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'rol']
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'profile']
         
 
 class LoginSerializer(serializers.Serializer):

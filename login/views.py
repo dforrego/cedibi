@@ -22,7 +22,7 @@ class UserList(RetrieveAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         data = serializer.data
-        return response_data(message='success profile', extra_data={'profile': data})
+        return response_data(message='success profile', extra_data={'user': data})
     
     
 # @rw_protected_resource(scopes=['login'])
