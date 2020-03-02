@@ -28,6 +28,10 @@ Temporary Items
 # Byte-compiled / optimized / DLL files
 __pycache__/
 cedibi/__pycache__/*
+cedibi/__pycache__/__init__.cpython-36.pyc
+cedibi/__pycache__/settings.cpython-36.pyc
+cedibi/__pycache__/urls.cpython-36.pyc
+cedibi/__pycache__/wsgi.cpython-36.pyc
 cedibi/__pycache__/
 *.py[cod]
 
