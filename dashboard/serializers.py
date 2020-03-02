@@ -16,7 +16,7 @@ class RolSerializer(serializers.ModelSerializer):
 
 
 class BoardsByRolSerializer(serializers.ModelSerializer):
-    board = BoardListSerializer(many=True, read_only=False)
+    boards = BoardListSerializer(many=True, read_only=False)
 
     class Meta:
         model = Rol
