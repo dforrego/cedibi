@@ -19,7 +19,7 @@ class Board(models.Model):
     description = models.CharField(max_length=120)
     type = models.ForeignKey(TypeBoard, on_delete=models.DO_NOTHING)
     status = models.BooleanField(default=True)
-    rol = models.ManyToManyField(Rol, related_name='board')
+    rol = models.ManyToManyField(Rol, related_name='boards')
     created_at = models.DateTimeField(auto_now_add=True, blank=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, blank=True, editable=False)
     
